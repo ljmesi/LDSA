@@ -34,13 +34,13 @@ public class WordCount {
             return new String(c);
         }
 
-        public char firstCharacterise(String string){
+        public String firstCharacterise(String string){
             if (string == null || string.length() == 0) {
                 return string;
             }
             char c[] = string.toCharArray();
             char firstCharacter = c[0];
-            return firstCharacter;
+            return new String(firstCharacter);
         }
     }
 	
