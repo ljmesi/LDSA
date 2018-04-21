@@ -18,7 +18,7 @@ public class WordCount {
             while (tokenizer.hasMoreTokens()) {
                 currentString = tokenizer.nextToken();
                 currentString = this.decapitalize(currentString);
-                word.set(currentString);
+                word.set(this.firstCharacterise(currentString));
                 output.collect(word, one);
             }
         }
@@ -32,6 +32,15 @@ public class WordCount {
                 c[0] = Character.toLowerCase(firstCharacter);
             }
             return new String(c);
+        }
+
+        public char firstCharacterise(String string){
+            if (string == null || string.length() == 0) {
+                return string;
+            }
+            char c[] = string.toCharArray();
+            char firstCharacter = c[0];
+            return firstCharacter;
         }
     }
 	
