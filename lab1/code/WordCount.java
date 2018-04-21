@@ -22,7 +22,7 @@ public class WordCount {
                 output.collect(word, one);
             }
         }
-        public static String decapitalize(String string){
+        public String decapitalize(String string){
             if (string == null || string.length() == 0) {
                 return string;
             }
