@@ -40,7 +40,7 @@ public class WordCount {
             }
             char c[] = string.toCharArray();
             char firstCharacter = c[0];
-            return new String(firstCharacter);
+            return String.valueOf(firstCharacter);
         }
     }
 	
