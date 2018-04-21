@@ -11,14 +11,27 @@ public class WordCount {
     public static class Map extends MapReduceBase implements Mapper<LongWritable, Text, Text, IntWritable> {
         private final static IntWritable one = new IntWritable(1);
         private Text word = new Text();
-	    
+        private String currentString = new String("");
         public void map(LongWritable key, Text value, OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
             String line = value.toString();
             StringTokenizer tokenizer = new StringTokenizer(line);
             while (tokenizer.hasMoreTokens()) {
-                word.set(tokenizer.nextToken());
+                currentString = tokenizer.nextToken();
+                currentString = this.decapitalize(currentString);
+                word.set(currentString);
                 output.collect(word, one);
             }
+        }
+        public static String decapitalize(String string){
+            if (string == null || string.length() == 0) {
+                return string;
+            }
+            char c[] = string.toCharArray();
+            char firstCharacter = c[0];
+            if (Character.isLetter(firstCharacter)){
+                c[0] = Character.toLowerCase(firstCharacter);
+            }
+            return new String(c);
         }
     }
 	
